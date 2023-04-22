@@ -10,6 +10,10 @@
 
 ### Как запустить
 - Скачайте код
+- Установить библиотеки
+
+  >pip install -r requirements.txt
+
 - Применение миграции
 
   >python manage.py migrate
