@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+    <h2>Подробнее о книге</h2>
+    <p>Группа: {{ object.group }}</p>
+    <p>Название книги: {{ object.title }}</p>
+    <p>Автор: {{ object.author }}</p>
+    <p>Описание книги: {{ object.description }}</p>
+    <p>Цена: {{ object.price }}</p>
+
+    <p>
+        <a href ="{% url 'book_change' pk=object.id %}">Изменить</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+    {% block head %}
+    {% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>О эти волшебные книжки</title>
+    </head>
+    <p>
+        <a href="{% url 'book_add' %}"> Добавить новую книгу</a>
+    </p>
+    {% endblock %}
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>

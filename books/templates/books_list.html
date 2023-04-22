@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<h2>Список всех книг</h2>
+<div class="table">
+    <table>
+        <tr>
+            <th class="col-1">Группа</th>
+            <th class="col-2">Название</th>
+            <th class="col-3">Автор</th>
+            <th class="col-4">Описание</th>
+            <th class="col-5">Цена</th>
+        </tr>
+
+        {% for book in books_list%}
+        <tr>
+            <th class="col-1">{{ book.group }}</th>
+            <th class="col-2"><a href="{% url 'book_detail' pk=book.id %}"> {{ book.title }} </a></th>
+            <th class="col-3">{{ book.author }}</th>
+            <th class="col-4">{{ book.description }}</th>
+            <th class="col-5">{{ book.price }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div id="controls">
+    <p><input type="checkbox" data-column-class="col-1" checked> Убрать Группа</p>
+    <p><input type="checkbox" data-column-class="col-2" checked> Убрать Название</p>
+    <p><input type="checkbox" data-column-class="col-3" checked> Убрать Автор</p>
+    <p><input type="checkbox" data-column-class="col-4" checked> Убрать Описание</p>
+    <p><input type="checkbox" data-column-class="col-5" checked> Убрать Цена</p>
+</div>
+<script>
+    const controls = document.getElementById('controls');
+    controls.addEventListener('change', e => {
+        toggleColumn(e.target.dataset.columnClass);
+    });
+
+    function toggleColumn(columnClass) {
+        const cells = document.querySelectorAll(`.${columnClass}`);
+
+        cells.forEach(cell => {
+            cell.classList.toggle('hidden');
+        });
+    }
+</script>
+{% endblock %}
